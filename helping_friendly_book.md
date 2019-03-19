@@ -1,14 +1,15 @@
-#The Helping Friendly Book  
+# The Helping Friendly Book  
 This is an ever-growing collection of commands, tricks and tips -- Read the Book.
 
-##Python
-####Create virtual environment on Mac/Linux:  
+## Python
+---
+#### Create virtual environment on Mac/Linux:  
 ```pip install virtualenv```  
 ```virtualenv --python=python2.7 venv```  
-####Activate virtualenv:  
+#### Activate virtualenv:  
 ```. venv/bin/activate```  
 
-####Load JSON file:  
+#### Load JSON file:  
 
 ```
 def load_config():  
@@ -16,22 +17,22 @@ def load_config():
 		cfg_file = json.load(conf)
 ```  
 
-####Find section of a string:  
+#### Find section of a string:  
 
 ```
 result = re.search(r'Frequency:(.*)Hz', 'Frequency:44100Hz')  
 print result.match(1)
 # 44100
 ```  
-####Find digits:  
+#### Find digits:  
 
 ```match = re.search(r'\d+', 'I am 27 years old')```  
   
-####Find Serial Number:  
+#### Find Serial Number:  
   
 ```pattern = re.compile("^([0-9]){8}$")```  
 
-####Get MAC Address from User:  
+#### Get MAC Address from User:  
   
 ```
 pattern = re.compile("^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$")  
@@ -45,7 +46,7 @@ while not match:
 	
 	match = pattern.match(mac_addr)
 ```  
-####Create SSH and SCP Instances  
+#### Create SSH and SCP Instances  
 
 ```
 import paramiko  
@@ -62,7 +63,7 @@ ssh_client.connect(
 
 scp_client = SCPClient(ssh_client.get_transport())
 ```  
-####Execute command over SSH and read stdout:  
+#### Execute command over SSH and read stdout:  
 
 ```  
 stdin, stdout, stderr, = self.ssh_client.exec_command(
@@ -82,21 +83,21 @@ else:
 	for line in lines:
     	self.log.info('\t{}'.format(line.rstrip()))
 ```  
-####Send and receive over SCP:  
+#### Send and receive over SCP:  
 
 ```  
 scp_client.put(<path_to_file>, <location_to_put_file>)  
 
 scp_client.get(<path_to_file>, <location_to_get_file>)
 ```  
-####Get memory address of Python object:  
+#### Get memory address of Python object:  
 
 ```
 cat_sound = 'meow'   
 print hex(id(cat_sound))
 # 0x10a96fea0
 ```  
-####Retrying Decorator on Exception (on requests ConnectionError):  
+#### Retrying Decorator on Exception (on requests ConnectionError):  
 
 ```  
 def retry_if_connection_error(exception):
@@ -109,7 +110,7 @@ def post(self):
 	<try to post>
 ```  
 
-####Timeout  
+#### Timeout  
 
 ```  
 timeout = 30
@@ -123,8 +124,9 @@ while do_a_thing:
 		break/continue
 ```  
 
-##Git / Version Control  
-####Git Basic Commands:  
+## Git / Version Control  
+---
+#### Git Basic Commands:  
 * **git status (-uno)**: display the state of the working directory and the staging area. The -uno option will hide untracked files.
 * **git branch (-r)**: display current branch and other local branches. The -r option will display all remote branches on repository.
 * **git add**: add a change in the working directory to the staging area.
@@ -136,7 +138,7 @@ while do_a_thing:
 * **git stash pop**: revert the previous stash command.
 * **git clone (repository url)**: make a local copy of a remote repository.  
 
-####Feature Branch Workflow:  
+#### Feature Branch Workflow:  
 
 ```  
 # checkout master branch
@@ -174,7 +176,7 @@ git pull origin master
 git push origin -d feature_branch
 git branch -D feature_branch
 ```  
-####SVN Basic Commands:  
+#### SVN Basic Commands:  
 * **Checkout**: 'svn checkout <URL> <checkout directory name>'
 * **Status**: 'svn status'
 * **Add**: 'svn add'
@@ -183,17 +185,18 @@ git branch -D feature_branch
 * **Get Info**: 'svn info'
 * **Get Commit History**: 'svn log -l5 -v URL_of_your_repository'
 
-##Command Line
-####Show USB devices on MacOS:  
+## Command Line
+---
+#### Show USB devices on MacOS:  
 ```ioreg -p IOUSB -l -w 0```  
 
-####Monitor Linux eth ports:  
+#### Monitor Linux eth ports:  
 ```while [ 1 ]; do  cat /proc/net/dev; sleep 1; clear; done```  
 
-####zip a folder:  
+#### zip a folder:  
 ```zip -r -X zipped_name.zip folder_to_zip```  
 
-####Add public rsa ssh keys for remote machine access:  
+#### Add public rsa ssh keys for remote machine access:  
 
 ```
 cat ~/.ssh/id_rsa.pub  
@@ -202,20 +205,20 @@ ssh host -l user
 vi ~/.ssh/authorized_keys
 # paste public key
 ```  
-####Resolve ECDSA fingerprint change error:  
+#### Resolve ECDSA fingerprint change error:  
 
 ```ssh-keygen -R IPv4_of_remote_machine```  
 
-####Interactive process viewer and manager for Unix:  
+#### Interactive process viewer and manager for Unix:  
 ```htop (M to sort by memory usage)```  
 
-####sed to replace text:  
+#### sed to replace text:  
 
 ``` 
 # replace foo with bar, replace fee with fi 
 sed -i '' -e 's|foo|bar|g' -e 's|fee|fi|g' *
 ```  
-####Find and Connect to Serial Device  
+#### Find and Connect to Serial Device  
 Find device in /dev/ and connect using screen  
 ```screen /dev/device_handle baud_rate -L```  
 To quit and detach from screen:  
@@ -223,7 +226,7 @@ To quit and detach from screen:
 
 **minicom also works well**
 
-####DHCP Stuff:  
+#### DHCP Stuff:  
 
 Check if processes are running:  
 
@@ -235,15 +238,15 @@ Leases: **/var/lib/dhcp/dhcpd.leases**
 Config: **/etc/dhcp/dhcpd.conf**  
 Server: **/etc/init.d/isc-dhcp-server** (to restart: **/etc/init.d/isc-dhcp-server restart**)  
 
-####TFTP Stuff:  
+#### TFTP Stuff:  
 
 Config: **/etc/inet.d.conf** -- inet.d.conf is a super-daemon (runs other daemons)  
 
 List TFTP Ports (port 69):  
 ```lsof -i udp -nP```
 
-##Vim and Bash Scripting  
-
+## Vim and Bash Scripting  
+---
 **Remove the first 'n' number of characters from each line:**  
 ```:%s/^.\{0,'n'\}//```  
 
@@ -264,9 +267,9 @@ colorscheme desert
 set nonumber
 nnoremap <F6> :set number!<CR>  
 ```  
-####Bash Stuff:  
+#### Bash Stuff:  
 
-Colored Icons:  
+**Colored Icons:**  
 
 ```
 COL_NC='\x1B[0m' # No Color
@@ -282,7 +285,8 @@ else
     echo -e "${TICK} Success."
 ```  
 
-####Look for environment variable in list of variables:  
+**Look for environment variable in list of variables:**  
+
 
 ```
 # list available options
@@ -296,8 +300,3 @@ else
     exit 1
 fi
 ```
-
-
-
-
-
