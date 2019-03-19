@@ -2,7 +2,6 @@
 This is an ever-growing collection of commands, tricks and tips -- Read the Book.
 
 ## Python
----
 #### Create virtual environment on Mac/Linux:  
 ```pip install virtualenv```  
 ```virtualenv --python=python2.7 venv```  
@@ -125,7 +124,6 @@ while do_a_thing:
 ```  
 
 ## Git / Version Control  
----
 #### Git Basic Commands:  
 * **git status (-uno)**: display the state of the working directory and the staging area. The -uno option will hide untracked files.
 * **git branch (-r)**: display current branch and other local branches. The -r option will display all remote branches on repository.
@@ -186,7 +184,6 @@ git branch -D feature_branch
 * **Get Commit History**: 'svn log -l5 -v URL_of_your_repository'
 
 ## Command Line
----
 #### Show USB devices on MacOS:  
 ```ioreg -p IOUSB -l -w 0```  
 
@@ -246,7 +243,6 @@ List TFTP Ports (port 69):
 ```lsof -i udp -nP```
 
 ## Vim and Bash Scripting  
----
 **Remove the first 'n' number of characters from each line:**  
 ```:%s/^.\{0,'n'\}//```  
 
