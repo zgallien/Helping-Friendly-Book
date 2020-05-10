@@ -1,5 +1,5 @@
 # The Helping Friendly Book  
-This is an ever-growing collection of commands, tricks and tips -- Read the Book.
+This is an ever-growing collection of commands, tricks and tips.
 
 ## Python
 #### Create virtual environment on Mac/Linux:  
